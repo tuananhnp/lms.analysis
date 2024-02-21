@@ -5,7 +5,7 @@ md`# Color Inspector`
 function _imgfile(Inputs){return(
 Inputs.file({
   label: "Upload image",
-  accept: ".png,.jpg",
+  accept: ".png,.jpg,.bmp,.gif",
   required: true
 })
 )}
@@ -14,8 +14,8 @@ async function _image(imgfile,DOM,$0)
 {
   let img = await imgfile.image();
   let aspect = img.width / img.height;
-  let height = 480;
-  let width = height * aspect;
+  let width = 720;
+  let height = width / aspect;
   let canvas = DOM.canvas(width, height);
   let ctx = canvas.getContext("2d");
   ctx.drawImage(img, 0, 0, width, height);
